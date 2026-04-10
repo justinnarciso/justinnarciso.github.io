@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justin Narciso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e6d9b8;
+    --bg-dots: #c9b890;
+    --tile: #f5ead0;
+    --tile-warm: #e8d4a8;
+    --tile-dark: #2a1d14;
+    --tile-red: #c2421a;
+    --tile-olive: #6b7340;
+    --ink: #1f170f;
+    --ink-soft: #574432;
+    --muted: #8a7550;
+    --cream: #f5ead0;
+    --display: 'Fraunces', Georgia, serif;
+    --hand: 'Caveat', 'Comic Sans MS', cursive;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 18px;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 57, 26, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(107, 115, 64, 0.05) 0%, transparent 40%),
+      radial-gradient(var(--bg-dots) 1.2px, transparent 1.2px);
+    background-size: auto, auto, 22px 22px;
+  }
+  @media (min-width: 900px) { body { padding: 24px 28px 28px; } }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.08;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection { background: var(--tile-red); color: var(--cream); }
+
+  .navbar {
+    max-width: 1340px;
+    margin: 0 auto 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    background: var(--tile);
+    border-radius: 22px 26px 20px 28px / 24px 22px 28px 20px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 2px 6px rgba(42,29,20,0.08), 0 8px 20px rgba(42,29,20,0.06);
+    transform: rotate(-0.15deg);
+    position: relative;
+  }
+  .navbar::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 40%;
+    width: 62px;
+    height: 18px;
+    background: rgba(212, 180, 120, 0.55);
+    border: 1px solid rgba(0,0,0,0.06);
+    transform: rotate(-2deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .nav-brand {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .nav-brand .period { color: var(--tile-red); }
+  .nav-brand .scribble {
+    font-family: var(--hand);
+    font-size: 18px;
+    color: var(--muted);
+    margin-left: 10px;
+    transform: rotate(-1.5deg);
+    display: inline-block;
+    font-weight: 500;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--tile-red); }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    left: -4px; right: -4px;
+    bottom: -4px;
+    height: 6px;
+    background: rgba(232, 216, 107, 0.7);
+    z-index: -1;
+    border-radius: 2px;
+    transform: rotate(-0.8deg);
+  }
+  .nav-links .resume-link {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--tile-red);
+    transform: rotate(-1.5deg);
+    display: inline-block;
+  }
+
+  .bento {
+    max-width: 1340px;
+    margin: 0 auto;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(150px, auto);
+  }
+  .tile {
+    background: var(--tile);
+    padding: 30px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px 28px 20px 26px / 26px 22px 28px 20px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 2px 6px rgba(42,29,20,0.08), 0 8px 20px rgba(42,29,20,0.06);
+    transform: rotate(-0.2deg);
+  }
+  .tile:nth-child(even) { transform: rotate(0.25deg); border-radius: 26px 20px 28px 22px / 22px 26px 20px 28px; }
+  .tile:nth-child(3n) { transform: rotate(-0.35deg); border-radius: 24px 22px 26px 20px / 28px 24px 22px 26px; }
+  .tile:nth-child(5n) { transform: rotate(0.15deg); border-radius: 28px 24px 22px 28px / 24px 20px 26px 24px; }
+  .tile-dark { background: var(--tile-dark); color: var(--cream); }
+  .tile-red { background: var(--tile-red); color: var(--cream); }
+  .tile-olive { background: var(--tile-olive); color: var(--cream); }
+  .tile-warm { background: var(--tile-warm); }
+  .tape {
+    position: absolute;
+    top: -10px;
+    width: 58px;
+    height: 18px;
+    background: rgba(212, 180, 120, 0.55);
+    border: 1px solid rgba(0,0,0,0.06);
+    transform: rotate(-3deg);
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .tape.right { right: 28px; transform: rotate(4deg); }
+  .tape.left { left: 28px; }
+  .tile-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .tile-dark .tile-label, .tile-red .tile-label, .tile-olive .tile-label { color: rgba(245, 234, 208, 0.6); }
+  .tile-label .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--tile-red);
+    display: inline-block;
+  }
+  .dot.live {
+    background: #e8d86b;
+    box-shadow: 0 0 0 0 rgba(232, 216, 107, 0.7);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(232, 216, 107, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(232, 216, 107, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(232, 216, 107, 0); }
+  }
+  .chip {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 11px;
+    border: 1px solid rgba(31, 23, 15, 0.18);
+    border-radius: 100px;
+    color: var(--ink-soft);
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+  }
+  .tile-dark .chip, .tile-red .chip, .tile-olive .chip {
+    border-color: rgba(245, 234, 208, 0.25);
+    color: rgba(245, 234, 208, 0.85);
+    background: rgba(245, 234, 208, 0.06);
+  }
+
+  .tile-hero {
+    grid-column: span 4;
+    grid-row: span 2;
+    background: var(--tile-dark);
+    color: var(--cream);
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  .tile-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; right: -40px;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle, rgba(194, 66, 26, 0.35), transparent 65%);
+    pointer-events: none;
+  }
+  .tile-hero .name {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(48px, 7.2vw, 112px);
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+  }
+  .tile-hero .name .period { color: var(--tile-red); }
+  .tile-hero .handwritten {
+    font-family: var(--hand);
+    font-size: 28px;
+    color: #e8d86b;
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-top: 14px;
+    margin-left: 8px;
+    position: relative;
+    z-index: 2;
+  }
+  .tile-hero .tagline {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 400;
+    color: rgba(245, 234, 208, 0.78);
+    margin-top: 22px;
+    max-width: 540px;
+    line-height: 1.55;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tile-available { grid-column: span 2; grid-row: span 1; justify-content: space-between; }
+  .tile-available .big {
+    font-family: var(--display);
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-top: auto;
+  }
+  .tile-available .sub {
+    font-family: var(--hand);
+    font-size: 22px;
+    color: rgba(245, 234, 208, 0.85);
+    margin-top: 6px;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+
+  .tile-loc { grid-column: span 2; grid-row: span 1; justify-content: space-between; }
+  .tile-loc .big {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.05;
+    margin-top: auto;
+    letter-spacing: -0.015em;
+  }
+  .tile-loc .scribble {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--muted);
+    margin-top: 4px;
+    transform: rotate(-0.8deg);
+    display: inline-block;
+  }
+
+  .tile-about { grid-column: span 4; grid-row: span 2; }
+  .tile-about .heading {
+    font-family: var(--display);
+    font-size: clamp(26px, 2.8vw, 36px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 22px;
+    max-width: 600px;
+  }
+  .tile-about p {
+    font-family: var(--display);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+    max-width: 620px;
+    font-weight: 400;
+  }
+  .tile-about p:last-child { margin-bottom: 0; }
+  .tile-about .highlight {
+    background: linear-gradient(180deg, transparent 55%, rgba(232, 216, 107, 0.55) 55%, rgba(232, 216, 107, 0.55) 90%, transparent 90%);
+    padding: 0 2px;
+  }
+
+  .tile-toolkit { grid-column: span 2; grid-row: span 1; }
+  .tile-toolkit .list { margin-top: auto; display: flex; flex-wrap: wrap; gap: 7px; }
+
+  .tile-focus { grid-column: span 2; grid-row: span 1; justify-content: space-between; }
+  .tile-focus .num {
+    font-family: var(--hand);
+    font-size: 28px;
+    color: var(--tile-red);
+    transform: rotate(-4deg);
+    display: inline-block;
+  }
+  .tile-focus.tile-dark .num, .tile-focus.tile-olive .num { color: #e8d86b; }
+  .tile-focus .name {
+    font-family: var(--display);
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-top: auto;
+    margin-bottom: 6px;
+    line-height: 1;
+  }
+  .tile-focus .desc {
+    font-family: var(--display);
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .tile-focus.tile-dark .desc, .tile-focus.tile-olive .desc { color: rgba(245, 234, 208, 0.75); }
+
+  .tile-cta-projects {
+    grid-column: span 4;
+    grid-row: span 1;
+    background: var(--tile-warm);
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+  .tile-cta-projects:hover { transform: rotate(0deg) translateY(-4px); }
+  .tile-cta-projects .cta-text {
+    font-family: var(--display);
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    flex: 1;
+  }
+  .tile-cta-projects .cta-text .note {
+    font-family: var(--hand);
+    font-size: 24px;
+    color: var(--tile-red);
+    transform: rotate(-1.5deg);
+    display: inline-block;
+    margin-left: 6px;
+  }
+  .tile-cta-projects .cta-arrow {
+    font-family: var(--display);
+    font-size: 64px;
+    font-weight: 500;
+    color: var(--tile-red);
+    line-height: 0.8;
+    transition: transform 0.3s;
+  }
+  .tile-cta-projects:hover .cta-arrow { transform: translateX(8px); }
+
+  .tile-contact {
+    grid-column: span 2;
+    grid-row: span 1;
+    justify-content: space-between;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, background 0.3s, color 0.3s;
+  }
+  .tile-contact:hover {
+    transform: rotate(0deg) translateY(-3px);
+    background: var(--tile-dark);
+    color: var(--cream);
+  }
+  .tile-contact:hover .tile-label { color: rgba(245, 234, 208, 0.55); }
+  .tile-contact:hover .tile-label .dot { background: #e8d86b; }
+  .tile-contact .value {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin-top: auto;
+    word-break: break-word;
+    line-height: 1.15;
+  }
+  .tile-contact .sub {
+    font-family: var(--hand);
+    font-size: 22px;
+    color: var(--tile-red);
+    margin-top: 4px;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+  .tile-contact:hover .sub { color: #e8d86b; }
+
+  .tile-footer {
+    grid-column: span 6;
+    grid-row: span 1;
+    min-height: 72px;
+    padding: 24px 32px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    background: var(--tile-warm);
+  }
+  .tile-footer .scribble {
+    font-family: var(--hand);
+    font-size: 22px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--ink-soft);
+    transform: rotate(-1deg);
+  }
+
+  @media (max-width: 900px) {
+    .bento { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+    .tile { padding: 24px; }
+    .tile-hero { grid-column: span 2; grid-row: span 2; }
+    .tile-available, .tile-loc, .tile-focus, .tile-contact, .tile-toolkit { grid-column: span 1; }
+    .tile-about { grid-column: span 2; grid-row: auto; }
+    .tile-cta-projects { grid-column: span 2; grid-row: auto; flex-direction: column; align-items: flex-start; gap: 14px; }
+    .tile-cta-projects .cta-arrow { font-size: 48px; align-self: flex-end; }
+    .tile-footer { grid-column: span 2; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .tile-hero .name { font-size: 56px; }
+    .tile-about .heading { font-size: 24px; }
+  }
+  @media (max-width: 720px) {
+    .navbar { flex-direction: column; gap: 14px; padding: 18px 22px; }
+    .nav-links { gap: 20px; font-size: 15px; flex-wrap: wrap; justify-content: center; }
+    .nav-links a { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">
+    Justin Narciso<span class="period">.</span>
+    <span class="scribble">marketing</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="mailto:jnarz2004@gmail.com" class="resume-link">get in touch →</a></li>
+  </ul>
+</nav>
+
+<main class="bento">
+
+  <div class="tile tile-hero">
+    <div class="tile-label"><span>◆ Portfolio — 2026</span><span>Buffalo, NY</span></div>
+    <div>
+      <div class="name">Justin<br>Narciso<span class="period">.</span></div>
+      <span class="handwritten">hey, thanks for stopping by</span>
+      <div class="tagline">Marketing student at the University at Buffalo. I work on the stuff that actually moves the needle online — search, social, and the data behind both.</div>
+    </div>
+  </div>
+
+  <div class="tile tile-available tile-red">
+    <div class="tile-label"><span>Status</span><span class="dot live"></span></div>
+    <div>
+      <div class="big">Open for Summer '26</div>
+      <div class="sub">let's talk</div>
+    </div>
+  </div>
+
+  <div class="tile tile-loc tile-warm">
+    <span class="tape right"></span>
+    <div class="tile-label"><span>Based in</span></div>
+    <div>
+      <div class="big">Buffalo, NY</div>
+      <div class="scribble">home of the good wings</div>
+    </div>
+  </div>
+
+  <div class="tile tile-about">
+    <span class="tape left"></span>
+    <div class="tile-label"><span>About</span><span>01</span></div>
+    <div class="heading">Marketing student pairing the creative side with the numbers.</div>
+    <p>I came into marketing through a side door. Before UB I ran the line at a Buffalo kitchen, and spent two summers delivering catering in New Jersey, handing out menus and selling the next order on the way out. Both jobs taught me that marketing is mostly <span class="highlight">paying attention and then acting on what you notice.</span></p>
+    <p>At school I've been pairing creative work — copy, positioning, campaign concept — with the quantitative side: SQL, stats, SEO fundamentals. Right now I'm building a couple of projects I actually care about.</p>
+  </div>
+
+  <div class="tile tile-toolkit">
+    <div class="tile-label"><span>Toolkit</span></div>
+    <div class="list">
+      <span class="chip">SEO</span>
+      <span class="chip">SQL</span>
+      <span class="chip">Python</span>
+      <span class="chip">Excel</span>
+      <span class="chip">Meta Ads</span>
+      <span class="chip">GA4</span>
+    </div>
+  </div>
+
+  <div class="tile tile-focus">
+    <div class="tile-label"><span>Focus</span><span>i</span></div>
+    <div>
+      <div class="num">no. 01</div>
+      <div class="name">Search</div>
+      <div class="desc">Technical audits, keyword research, on-page work. The long game.</div>
+    </div>
+  </div>
+
+  <div class="tile tile-focus tile-olive">
+    <div class="tile-label"><span>Focus</span><span>ii</span></div>
+    <div>
+      <div class="num">no. 02</div>
+      <div class="name">Social</div>
+      <div class="desc">Paid and organic. Platform-native creative, not reheated captions.</div>
+    </div>
+  </div>
+
+  <div class="tile tile-focus tile-dark">
+    <div class="tile-label"><span>Focus</span><span>iii</span></div>
+    <div>
+      <div class="num">no. 03</div>
+      <div class="name">Data</div>
+      <div class="desc">SQL, Python, GA4 — turning a finished campaign into the next one.</div>
+    </div>
+  </div>
+
+  <a class="tile tile-cta-projects" href="projects.html">
+    <span class="tape left"></span>
+    <div>
+      <div class="tile-label"><span>Featured Work</span><span>→ projects</span></div>
+      <div class="cta-text">Three projects I'm proud of. <span class="note">take a look</span></div>
+    </div>
+    <div class="cta-arrow">→</div>
+  </a>
+
+  <a class="tile tile-contact" href="mailto:jnarz2004@gmail.com">
+    <div class="tile-label"><span>Contact</span><span class="dot"></span></div>
+    <div>
+      <div class="value">jnarz2004@gmail.com</div>
+      <div class="sub">drop a line →</div>
+    </div>
+  </a>
+
+  <a class="tile tile-contact" href="https://linkedin.com/in/jnarciso2" target="_blank" rel="noopener">
+    <div class="tile-label"><span>Contact</span></div>
+    <div>
+      <div class="value">/in/jnarciso2</div>
+      <div class="sub">say hi on LinkedIn →</div>
+    </div>
+  </a>
+
+  <a class="tile tile-contact" href="tel:+18456942931">
+    <div class="tile-label"><span>Contact</span></div>
+    <div>
+      <div class="value">(845) 694-2931</div>
+      <div class="sub">or give me a ring →</div>
+    </div>
+  </a>
+
+  <div class="tile tile-footer">
+    <div>© 2026 Justin Narciso · Built by hand</div>
+    <div class="scribble">made in Buffalo</div>
+  </div>
+
+</main>
+
+</body>
+</html>

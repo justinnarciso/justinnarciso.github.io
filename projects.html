@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Justin Narciso</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e6d9b8;
+    --bg-dots: #c9b890;
+    --tile: #f5ead0;
+    --tile-warm: #e8d4a8;
+    --tile-dark: #2a1d14;
+    --tile-red: #c2421a;
+    --tile-olive: #6b7340;
+    --ink: #1f170f;
+    --ink-soft: #574432;
+    --muted: #8a7550;
+    --cream: #f5ead0;
+    --display: 'Fraunces', Georgia, serif;
+    --hand: 'Caveat', 'Comic Sans MS', cursive;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 18px;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 57, 26, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(107, 115, 64, 0.05) 0%, transparent 40%),
+      radial-gradient(var(--bg-dots) 1.2px, transparent 1.2px);
+    background-size: auto, auto, 22px 22px;
+  }
+  @media (min-width: 900px) { body { padding: 24px 28px 28px; } }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.08;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection { background: var(--tile-red); color: var(--cream); }
+
+  .navbar {
+    max-width: 1340px;
+    margin: 0 auto 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    background: var(--tile);
+    border-radius: 22px 26px 20px 28px / 24px 22px 28px 20px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 2px 6px rgba(42,29,20,0.08), 0 8px 20px rgba(42,29,20,0.06);
+    transform: rotate(-0.15deg);
+    position: relative;
+  }
+  .navbar::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 40%;
+    width: 62px;
+    height: 18px;
+    background: rgba(212, 180, 120, 0.55);
+    border: 1px solid rgba(0,0,0,0.06);
+    transform: rotate(-2deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .nav-brand {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .nav-brand .period { color: var(--tile-red); }
+  .nav-brand .scribble {
+    font-family: var(--hand);
+    font-size: 18px;
+    color: var(--muted);
+    margin-left: 10px;
+    transform: rotate(-1.5deg);
+    display: inline-block;
+    font-weight: 500;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--tile-red); }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    left: -4px; right: -4px;
+    bottom: -4px;
+    height: 6px;
+    background: rgba(232, 216, 107, 0.7);
+    z-index: -1;
+    border-radius: 2px;
+    transform: rotate(-0.8deg);
+  }
+  .nav-links .resume-link {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--tile-red);
+    transform: rotate(-1.5deg);
+    display: inline-block;
+  }
+
+  .bento {
+    max-width: 1340px;
+    margin: 0 auto;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(150px, auto);
+  }
+  .tile {
+    background: var(--tile);
+    padding: 30px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px 28px 20px 26px / 26px 22px 28px 20px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 2px 6px rgba(42,29,20,0.08), 0 8px 20px rgba(42,29,20,0.06);
+    transform: rotate(-0.2deg);
+  }
+  .tile:nth-child(even) { transform: rotate(0.25deg); border-radius: 26px 20px 28px 22px / 22px 26px 20px 28px; }
+  .tile:nth-child(3n) { transform: rotate(-0.35deg); border-radius: 24px 22px 26px 20px / 28px 24px 22px 26px; }
+  .tile:nth-child(5n) { transform: rotate(0.15deg); border-radius: 28px 24px 22px 28px / 24px 20px 26px 24px; }
+  .tile-dark { background: var(--tile-dark); color: var(--cream); }
+  .tile-warm { background: var(--tile-warm); }
+  .tape {
+    position: absolute;
+    top: -10px;
+    width: 58px;
+    height: 18px;
+    background: rgba(212, 180, 120, 0.55);
+    border: 1px solid rgba(0,0,0,0.06);
+    transform: rotate(-3deg);
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .tape.right { right: 28px; transform: rotate(4deg); }
+  .tape.left { left: 28px; }
+  .tile-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .tile-dark .tile-label { color: rgba(245, 234, 208, 0.6); }
+  .tile-label .dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--tile-red);
+    display: inline-block;
+  }
+  .dot.live {
+    background: #e8d86b;
+    box-shadow: 0 0 0 0 rgba(232, 216, 107, 0.7);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(232, 216, 107, 0.6); }
+    70% { box-shadow: 0 0 0 10px rgba(232, 216, 107, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(232, 216, 107, 0); }
+  }
+  .chip {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 6px 11px;
+    border: 1px solid rgba(31, 23, 15, 0.18);
+    border-radius: 100px;
+    color: var(--ink-soft);
+    background: rgba(255, 255, 255, 0.2);
+    display: inline-block;
+  }
+  .tile-dark .chip {
+    border-color: rgba(245, 234, 208, 0.25);
+    color: rgba(245, 234, 208, 0.85);
+    background: rgba(245, 234, 208, 0.06);
+  }
+
+  .tile-page-header {
+    grid-column: span 6;
+    grid-row: span 1;
+    background: var(--tile-dark);
+    color: var(--cream);
+    overflow: hidden;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 30px;
+    min-height: 220px;
+  }
+  .tile-page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; right: -30px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(194, 66, 26, 0.32), transparent 65%);
+    pointer-events: none;
+  }
+  .tile-page-header .page-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(52px, 8vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    position: relative;
+    z-index: 2;
+  }
+  .tile-page-header .page-title .period { color: var(--tile-red); }
+  .tile-page-header .page-title .scribble {
+    font-family: var(--hand);
+    font-size: 30px;
+    color: #e8d86b;
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-left: 14px;
+    vertical-align: middle;
+  }
+  .tile-page-header .page-blurb {
+    font-family: var(--display);
+    font-size: 17px;
+    color: rgba(245, 234, 208, 0.78);
+    max-width: 380px;
+    line-height: 1.55;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 10px;
+  }
+
+  .tile-project {
+    grid-column: span 3;
+    grid-row: span 3;
+    justify-content: space-between;
+    min-height: 480px;
+  }
+  .tile-project.wide { grid-column: span 6; grid-row: span 2; min-height: 360px; }
+
+  .proj-hero-num {
+    font-family: var(--hand);
+    font-size: 64px;
+    color: var(--tile-red);
+    transform: rotate(-4deg);
+    display: inline-block;
+    line-height: 0.9;
+    margin-bottom: 8px;
+  }
+  .tile-project.tile-dark .proj-hero-num { color: #e8d86b; }
+
+  .proj-title {
+    font-family: var(--display);
+    font-size: clamp(30px, 3.4vw, 44px);
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin-bottom: 18px;
+    margin-top: 4px;
+  }
+  .proj-status-note {
+    font-family: var(--hand);
+    font-size: 24px;
+    color: var(--tile-red);
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-left: 8px;
+    vertical-align: baseline;
+  }
+  .tile-project.tile-dark .proj-status-note { color: #e8d86b; }
+
+  .proj-blurb {
+    font-family: var(--display);
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+    max-width: 520px;
+  }
+  .tile-project.tile-dark .proj-blurb { color: rgba(245, 234, 208, 0.75); }
+
+  .proj-bullets {
+    list-style: none;
+    margin-bottom: 22px;
+    max-width: 520px;
+  }
+  .proj-bullets li {
+    font-family: var(--display);
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 7px;
+  }
+  .proj-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--tile-red);
+    font-weight: 600;
+  }
+  .tile-project.tile-dark .proj-bullets li { color: rgba(245, 234, 208, 0.78); }
+  .tile-project.tile-dark .proj-bullets li::before { color: #e8d86b; }
+
+  .proj-meta-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(31, 23, 15, 0.15);
+  }
+  .tile-project.tile-dark .proj-meta-row { border-top-color: rgba(245, 234, 208, 0.18); }
+
+  .tile-project.wide .proj-content-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 50px;
+    align-items: start;
+  }
+
+  .tile-back {
+    grid-column: span 6;
+    grid-row: span 1;
+    background: var(--tile-warm);
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    text-decoration: none;
+    color: inherit;
+    min-height: 110px;
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
+  }
+  .tile-back:hover { transform: rotate(0deg) translateY(-3px); }
+  .tile-back .back-arrow {
+    font-family: var(--display);
+    font-size: 48px;
+    color: var(--tile-red);
+    font-weight: 500;
+    line-height: 0.8;
+  }
+  .tile-back .back-text {
+    font-family: var(--display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  .tile-back .back-text .note {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--muted);
+    margin-left: 8px;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+
+  @media (max-width: 900px) {
+    .bento { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+    .tile { padding: 24px; }
+    .tile-page-header { grid-column: span 2; flex-direction: column; align-items: flex-start; min-height: 220px; }
+    .tile-page-header .page-title { font-size: 58px; }
+    .tile-project { grid-column: span 2; grid-row: auto; min-height: auto; }
+    .tile-project.wide { grid-column: span 2; grid-row: auto; }
+    .tile-project.wide .proj-content-grid { grid-template-columns: 1fr; gap: 24px; }
+    .tile-back { grid-column: span 2; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .tile-back .back-arrow { align-self: flex-end; font-size: 40px; }
+  }
+  @media (max-width: 720px) {
+    .navbar { flex-direction: column; gap: 14px; padding: 18px 22px; }
+    .nav-links { gap: 20px; font-size: 15px; flex-wrap: wrap; justify-content: center; }
+    .nav-links a { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">
+    Justin Narciso<span class="period">.</span>
+    <span class="scribble">marketing</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="mailto:jnarz2004@gmail.com" class="resume-link">get in touch →</a></li>
+  </ul>
+</nav>
+
+<main class="bento">
+
+  <div class="tile tile-page-header">
+    <div class="tile-label"><span>◆ Selected Work</span><span>03 Projects</span></div>
+    <div class="page-title">
+      Projects<span class="period">.</span>
+      <span class="scribble">the good stuff</span>
+    </div>
+    <div class="page-blurb">
+      A few things I've built or am building right now. Some are finished, some are mid-flight. All real work.
+    </div>
+  </div>
+
+  <div class="tile tile-project">
+    <span class="tape left"></span>
+    <div class="tile-label"><span>Project 01</span><span>Shipping</span></div>
+    <div>
+      <div class="proj-hero-num">no. 01</div>
+      <div class="proj-title">SEO Audit & Strategy</div>
+      <p class="proj-blurb">A full technical and content audit for a small business site. Turned a messy, underperforming site into a prioritized action plan the owner could actually work through.</p>
+      <ul class="proj-bullets">
+        <li>Crawl analysis and technical health check</li>
+        <li>Keyword gap research against local competitors</li>
+        <li>On-page recommendations, page by page</li>
+        <li>Roadmap scored by effort vs. expected impact</li>
+      </ul>
+    </div>
+    <div class="proj-meta-row">
+      <span class="chip">SEO</span>
+      <span class="chip">Solo</span>
+      <span class="chip">Small Business</span>
+    </div>
+  </div>
+
+  <div class="tile tile-project tile-dark">
+    <div class="tile-label"><span>Project 02</span><span class="dot live"></span></div>
+    <div>
+      <div class="proj-hero-num">no. 02</div>
+      <div class="proj-title">A/B Ad Campaign Test <span class="proj-status-note">← running now</span></div>
+      <p class="proj-blurb">A paid social experiment I'm running end to end — writing the hypothesis, building creative variants, splitting audiences, and setting up clean measurement. Results and learnings posted when it wraps.</p>
+      <ul class="proj-bullets">
+        <li>Hypothesis and success metric defined up front</li>
+        <li>Two creative variants tested against a control</li>
+        <li>Audience splits sized for statistical sanity</li>
+        <li>Full readout: what worked, what didn't, what's next</li>
+      </ul>
+    </div>
+    <div class="proj-meta-row">
+      <span class="chip">Paid Social</span>
+      <span class="chip">Experimentation</span>
+      <span class="chip">In Progress</span>
+    </div>
+  </div>
+
+  <div class="tile tile-project wide">
+    <span class="tape right"></span>
+    <div class="tile-label"><span>Project 03</span><span>UB Marketing Association</span></div>
+    <div class="proj-content-grid">
+      <div>
+        <div class="proj-hero-num">no. 03</div>
+        <div class="proj-title">Nike Campaign Remix <span class="proj-status-note">1st place!</span></div>
+        <p class="proj-blurb">Group project for the UB Marketing Association. My team pulled apart the strategy behind a major Nike campaign, then built a competing concept from scratch. Took first among club submissions.</p>
+        <div class="proj-meta-row">
+          <span class="chip">Strategy</span>
+          <span class="chip">Creative</span>
+          <span class="chip">Team</span>
+          <span class="chip">1st Place</span>
+        </div>
+      </div>
+      <div>
+        <ul class="proj-bullets">
+          <li>Deconstructed the original campaign's audience, insight, and channel plan</li>
+          <li>Wrote a new positioning statement and core creative idea</li>
+          <li>Built mock creative and a rough media plan</li>
+          <li>Presented to club members and took first place</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <a class="tile tile-back" href="index.html">
+    <div>
+      <div class="back-text">Back to the main page <span class="note">thanks for reading</span></div>
+    </div>
+    <div class="back-arrow">←</div>
+  </a>
+
+</main>
+
+</body>
+</html>
