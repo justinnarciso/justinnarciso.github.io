@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog · Justin Narciso</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZJ6MHHZCL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TZJ6MHHZCL');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #e6d9b8;
+    --bg-dots: #c9b890;
+    --tile: #f5ead0;
+    --tile-warm: #e8d4a8;
+    --tile-dark: #2a1d14;
+    --tile-red: #c2421a;
+    --tile-olive: #6b7340;
+    --ink: #1f170f;
+    --ink-soft: #574432;
+    --muted: #8a7550;
+    --cream: #f5ead0;
+    --display: 'Fraunces', Georgia, serif;
+    --hand: 'Caveat', 'Comic Sans MS', cursive;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding: 18px;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(184, 57, 26, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(107, 115, 64, 0.05) 0%, transparent 40%),
+      radial-gradient(var(--bg-dots) 1.2px, transparent 1.2px);
+    background-size: auto, auto, 22px 22px;
+  }
+  @media (min-width: 900px) { body { padding: 24px 28px 28px; } }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.08;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  ::selection { background: var(--tile-red); color: var(--cream); }
+
+  .navbar {
+    max-width: 1340px;
+    margin: 0 auto 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 28px;
+    background: var(--tile);
+    border-radius: 22px 26px 20px 28px / 24px 22px 28px 20px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 2px 6px rgba(42,29,20,0.08), 0 8px 20px rgba(42,29,20,0.06);
+    transform: rotate(-0.15deg);
+    position: relative;
+  }
+  .navbar::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 40%;
+    width: 62px;
+    height: 18px;
+    background: rgba(212, 180, 120, 0.55);
+    border: 1px solid rgba(0,0,0,0.06);
+    transform: rotate(-2deg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .nav-brand {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .nav-brand .period { color: var(--tile-red); }
+  .nav-brand .scribble {
+    font-family: var(--hand);
+    font-size: 18px;
+    color: var(--muted);
+    margin-left: 10px;
+    transform: rotate(-1.5deg);
+    display: inline-block;
+    font-weight: 500;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--display);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a:hover { color: var(--tile-red); }
+  .nav-links a.active { color: var(--ink); }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    left: -4px; right: -4px;
+    bottom: -4px;
+    height: 6px;
+    background: rgba(232, 216, 107, 0.7);
+    z-index: -1;
+    border-radius: 2px;
+    transform: rotate(-0.8deg);
+  }
+  .nav-links .resume-link {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--tile-red);
+    transform: rotate(-1.5deg);
+    display: inline-block;
+  }
+
+  .bento {
+    max-width: 1340px;
+    margin: 0 auto;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-auto-rows: minmax(120px, auto);
+  }
+  .tile {
+    background: var(--tile);
+    padding: 30px 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 22px 28px 20px 26px / 26px 22px 28px 20px;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 2px 6px rgba(42,29,20,0.08), 0 8px 20px rgba(42,29,20,0.06);
+    transform: rotate(-0.2deg);
+  }
+  .tile:nth-child(even) { transform: rotate(0.25deg); border-radius: 26px 20px 28px 22px / 22px 26px 20px 28px; }
+  .tile:nth-child(3n) { transform: rotate(-0.35deg); border-radius: 24px 22px 26px 20px / 28px 24px 22px 26px; }
+  .tile:nth-child(5n) { transform: rotate(0.15deg); border-radius: 28px 24px 22px 28px / 24px 20px 26px 24px; }
+  .tile-dark { background: var(--tile-dark); color: var(--cream); }
+  .tile-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 2;
+  }
+  .tile-dark .tile-label { color: rgba(245, 234, 208, 0.6); }
+  .tape {
+    position: absolute;
+    top: -10px;
+    width: 58px;
+    height: 18px;
+    background: rgba(212, 180, 120, 0.55);
+    border: 1px solid rgba(0,0,0,0.06);
+    transform: rotate(-3deg);
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  }
+  .tape.right { right: 28px; transform: rotate(4deg); }
+  .tape.left { left: 28px; }
+
+  .tile-page-header {
+    grid-column: span 10;
+    grid-row: span 1;
+    background: var(--tile-dark);
+    color: var(--cream);
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    min-height: 220px;
+    padding-top: 20px;
+    padding-bottom: 40px;
+  }
+  .tile-page-header::after {
+    content: '';
+    position: absolute;
+    bottom: -50px; right: -30px;
+    width: 260px; height: 260px;
+    background: radial-gradient(circle, rgba(194, 66, 26, 0.32), transparent 65%);
+    pointer-events: none;
+  }
+  .tile-page-header .page-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(52px, 8vw, 120px);
+    line-height: 0.9;
+    letter-spacing: -0.035em;
+    position: relative;
+    z-index: 2;
+  }
+  .tile-page-header .page-title .period { color: var(--tile-red); }
+  .tile-page-header .page-title .scribble {
+    font-family: var(--hand);
+    font-size: 30px;
+    color: #e8d86b;
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-left: 14px;
+    vertical-align: middle;
+  }
+
+  .post-card {
+    grid-column: span 5;
+    padding: 32px 36px 28px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    justify-content: space-between;
+  }
+  .post-card:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 4px 16px rgba(42,29,20,0.15); }
+  .post-card .post-date {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .post-card .post-title {
+    font-family: var(--display);
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .post-card .post-excerpt {
+    font-family: var(--display);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 18px;
+  }
+  .post-card .post-read {
+    font-family: var(--hand);
+    font-size: 20px;
+    color: var(--tile-red);
+    transform: rotate(-1deg);
+    display: inline-block;
+    margin-top: auto;
+  }
+
+  .empty-state {
+    grid-column: span 10;
+    text-align: center;
+    padding: 60px 32px;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    transform: none;
+  }
+  .empty-state .heading {
+    font-family: var(--display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .empty-state .sub {
+    font-family: var(--hand);
+    font-size: 22px;
+    color: var(--muted);
+  }
+
+  .tile-footer {
+    grid-column: span 10;
+    min-height: 0;
+    padding: 8px 32px 0;
+    margin-top: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    transform: none;
+  }
+  .tile-footer .scribble {
+    font-family: var(--hand);
+    font-size: 18px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--muted);
+    transform: rotate(-1deg);
+  }
+
+  @media (max-width: 900px) {
+    .bento { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+    .tile { padding: 24px; }
+    .tile-page-header { grid-column: span 2; flex-direction: column; align-items: flex-start; min-height: 220px; }
+    .tile-page-header .page-title { font-size: 58px; }
+    .post-card { grid-column: span 2; }
+    .empty-state { grid-column: span 2; }
+    .tile-footer { grid-column: span 2; }
+  }
+  @media (max-width: 720px) {
+    .navbar { flex-direction: column; gap: 14px; padding: 18px 22px; }
+    .nav-links { gap: 20px; font-size: 15px; flex-wrap: wrap; justify-content: center; }
+    .nav-links a { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="/" class="nav-brand">
+    Justin Narciso<span class="period">.</span>
+    <span class="scribble">marketing</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="/#contact">Contact</a></li>
+    <li><a href="resume.pdf" target="_blank" class="resume-link">resume &rarr;</a></li>
+  </ul>
+</nav>
+
+<main class="bento">
+
+  <div class="tile tile-page-header">
+    <div class="tile-label"><span>&#9670; Blog</span></div>
+    <div class="page-title">
+      Blog<span class="period">.</span>
+      <span class="scribble">thoughts and notes</span>
+    </div>
+  </div>
+
+  <div id="posts-container"></div>
+
+  <div class="tile tile-footer">
+    <div>&copy; 2026 Justin Narciso</div>
+    <div class="scribble">made in Suffern</div>
+  </div>
+
+</main>
+
+<script>
+fetch('posts.json')
+  .then(function(r) { return r.json(); })
+  .then(function(posts) {
+    var container = document.getElementById('posts-container');
+    if (!posts.length) {
+      container.outerHTML = '<div class="empty-state"><div class="heading">Coming soon.</div><div class="sub">posts on the way</div></div>';
+      return;
+    }
+    posts.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+    var html = '';
+    posts.forEach(function(post, i) {
+      var excerpt = post.excerpt || '';
+      if (excerpt.length > 160) excerpt = excerpt.substring(0, 157) + '...';
+      var date = new Date(post.date + 'T00:00:00');
+      var dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+      html += '<a class="tile post-card" href="' + post.url + '" target="_blank">';
+      if (i === 0) html += '<span class="tape left"></span>';
+      if (i === 1) html += '<span class="tape right"></span>';
+      html += '<div>';
+      html += '<div class="post-date">' + dateStr + '</div>';
+      html += '<div class="post-title">' + post.title + '</div>';
+      html += '<div class="post-excerpt">' + excerpt + '</div>';
+      html += '</div>';
+      html += '<div class="post-read">read on Substack &rarr;</div>';
+      html += '</a>';
+    });
+    container.outerHTML = html;
+  });
+</script>
+
+</body>
+</html>
