@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Justin Narciso</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TZJ6MHHZCL"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-TZJ6MHHZCL');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -590,7 +597,7 @@
     </div>
   </div>
 
-  <a id="contact" class="tile tile-contact" href="mailto:jnarz2004@gmail.com" style="grid-column: 1 / span 2">
+  <a id="contact" class="tile tile-contact" href="mailto:jnarz2004@gmail.com" style="grid-column: 1 / span 2" onclick="gtag('event','contact_click',{contact_method:'email'})">
     <div class="tile-label"><span>Contact</span></div>
     <div>
       <div class="value">jnarz2004@gmail.com</div>
@@ -598,7 +605,7 @@
     </div>
   </a>
 
-  <a class="tile tile-contact" href="https://linkedin.com/in/jnarciso2" target="_blank" rel="noopener">
+  <a class="tile tile-contact" href="https://linkedin.com/in/jnarciso2" target="_blank" rel="noopener" onclick="gtag('event','contact_click',{contact_method:'linkedin'})">
     <div class="tile-label"><span>Contact</span></div>
     <div>
       <div class="value">/in/jnarciso2</div>
@@ -606,7 +613,7 @@
     </div>
   </a>
 
-  <a class="tile tile-contact" href="tel:+18456942931">
+  <a class="tile tile-contact" href="tel:+18456942931" onclick="gtag('event','contact_click',{contact_method:'phone'})">
     <div class="tile-label"><span>Contact</span></div>
     <div>
       <div class="value">(845) 694-2931</div>
