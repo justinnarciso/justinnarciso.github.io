@@ -467,32 +467,6 @@ gtag('config', 'G-TZJ6MHHZCL');
   }
   .tile-contact:hover .sub { color: #e8d86b; }
 
-  .tile-postit {
-    grid-column: span 2;
-    background: #e8d86b;
-    padding: 16px 18px;
-    transform: rotate(2.2deg);
-    box-shadow: 0 2px 8px rgba(42,29,20,0.12);
-    border-radius: 2px;
-    min-height: auto;
-    position: relative;
-    align-self: end;
-  }
-  .tile-postit .postit-text {
-    font-family: var(--hand);
-    font-size: 17px;
-    color: #1f170f;
-    line-height: 1.35;
-  }
-  .tile-postit .postit-label {
-    font-family: var(--mono);
-    font-size: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: rgba(31,23,15,0.45);
-    margin-bottom: 6px;
-  }
-
   .tile-footer {
     grid-column: span 6;
     min-height: 0;
@@ -528,8 +502,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     .tile-about { grid-column: span 2; grid-row: auto; }
     .tile-featured { grid-column: span 2 !important; }
     .featured-grid { grid-template-columns: 1fr; gap: 20px; }
-    .tile-postit { grid-column: span 2; }
-    .tile-footer { grid-column: span 2 !important; flex-direction: column; gap: 10px; align-items: flex-start; }
+    .tile-footer { grid-column: span 2; flex-direction: column; gap: 10px; align-items: flex-start; }
     .tile-hero .name { font-size: 56px; }
     .tile-about .heading { font-size: 24px; }
   }
@@ -649,12 +622,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     </div>
   </a>
 
-  <div class="tile tile-postit">
-    <div class="postit-label">GA4 · this site</div>
-    <div class="postit-text">This site runs on GA4 with custom event tracking on every contact button and project link. I use what it tells me to decide what changes, not just to fill a dashboard.</div>
-  </div>
-
-  <div class="tile tile-footer" style="grid-column: span 4">
+  <div class="tile tile-footer">
     <div>© 2026 Justin Narciso</div>
     <div class="scribble">made in Suffern</div>
   </div>

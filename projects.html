@@ -413,6 +413,35 @@ gtag('config', 'G-TZJ6MHHZCL');
     align-items: start;
   }
 
+  .postit-overlay {
+    position: absolute;
+    bottom: 46px;
+    right: 220px;
+    width: 175px;
+    height: 175px;
+    padding: 16px 14px 12px;
+    background: #e8d86b;
+    transform: rotate(2.5deg);
+    box-shadow: 2px 3px 8px rgba(42,29,20,0.18);
+    border-radius: 2px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .postit-overlay .postit-label {
+    font-family: var(--hand);
+    font-size: 17px;
+    color: rgba(31,23,15,0.5);
+    margin-bottom: 6px;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+  .postit-overlay .postit-text {
+    font-family: var(--hand);
+    font-size: 15px;
+    color: #1f170f;
+    line-height: 1.3;
+  }
+
   .tile-back {
     grid-column: span 10;
     grid-row: span 1;
@@ -482,6 +511,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     .tile-page-header { grid-column: span 10; flex-direction: column; align-items: flex-start; min-height: 220px; }
     .tile-page-header .page-title { font-size: 58px; }
     .tile-project { grid-column: span 10 !important; grid-row: auto; min-height: auto; }
+    .postit-overlay { display: none; }
     .tile-project.wide { grid-column: span 10 !important; grid-row: auto; }
     .tile-project.wide .proj-content-grid { grid-template-columns: 1fr; gap: 24px; }
     .proj-content-grid { grid-template-columns: 1fr !important; gap: 24px; }
@@ -520,9 +550,13 @@ gtag('config', 'G-TZJ6MHHZCL');
     </div>
   </div>
 
-  <a class="tile tile-project" href="spar_mma_seo_audit.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;grid-column:span 10">
+  <a class="tile tile-project" href="spar_mma_seo_audit.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;grid-column:span 10;position:relative;overflow:visible">
     <span class="tape left"></span>
-    <div class="tile-label"><span>Project 01</span><span>April 2025</span></div>
+    <div class="tile-label"><span>Project 01</span><span>April 2026</span></div>
+    <div class="postit-overlay">
+      <div class="postit-label">p.s.</div>
+      <div class="postit-text">This portfolio is tracked with GA4. Every contact button, project click, and scroll gets logged so I know what to change next.</div>
+    </div>
     <div class="proj-content-grid">
       <div>
         <div class="proj-hero-num">no. 01</div>
