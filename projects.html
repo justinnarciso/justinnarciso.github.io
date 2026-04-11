@@ -356,6 +356,41 @@ gtag('config', 'G-TZJ6MHHZCL');
   .tile-project.tile-dark .proj-bullets li { color: rgba(245, 234, 208, 0.78); }
   .tile-project.tile-dark .proj-bullets li::before { color: #e8d86b; }
 
+  .proj-content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .spar-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .stat {
+    text-align: center;
+    padding: 18px 10px;
+    background: rgba(0,0,0,0.04);
+    border-radius: 12px;
+  }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 30px;
+    font-weight: 600;
+    display: block;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-top: 4px;
+    display: block;
+  }
+
   .proj-meta-row {
     display: flex;
     gap: 8px;
@@ -444,6 +479,8 @@ gtag('config', 'G-TZJ6MHHZCL');
     .tile-project { grid-column: span 10 !important; grid-row: auto; min-height: auto; }
     .tile-project.wide { grid-column: span 10 !important; grid-row: auto; }
     .tile-project.wide .proj-content-grid { grid-template-columns: 1fr; gap: 24px; }
+    .proj-content-grid { grid-template-columns: 1fr !important; gap: 24px; }
+    .spar-stats { grid-template-columns: 1fr 1fr !important; }
     .tile-footer { grid-column: span 10; }
   }
   @media (max-width: 720px) {
@@ -481,18 +518,23 @@ gtag('config', 'G-TZJ6MHHZCL');
   <a class="tile tile-project" href="spar_mma_seo_audit.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;grid-column:span 10">
     <span class="tape left"></span>
     <div class="tile-label"><span>Project 01</span><span>Shipping</span></div>
-    <div>
-      <div class="proj-hero-num">no. 01</div>
-      <div class="proj-title">Spar MMA · SEO Audit</div>
-      <p class="proj-blurb">Full technical and content audit for a martial arts gym in Williamsville, NY. The site was pulling 63 organic visitors/month, loading in 7.8 seconds on mobile, and had 111 crawl errors in its robots.txt. I identified 7 core issues and built a prioritized fix list ordered by impact vs. effort.</p>
-      <ul class="proj-bullets">
-        <li>Mobile speed score: 66/100. Biggest drag was uncompressed images (250 KB photos that should be 40 KB)</li>
-        <li>Broken robots.txt serving HTML instead of crawl instructions, causing 111 Google errors</li>
-        <li>3 of 4 pages missing H1 tags, all slideshow images missing alt text</li>
-        <li>Organic traffic down 58% (150 to 63/month) with zero content updates since 2017</li>
-        <li>Site authority: 4/100 with only 1 functional backlink</li>
-        <li>First fixes: robots.txt repair and image compression to WebP, projected to cut load time under 3 seconds</li>
-      </ul>
+    <div class="proj-content-grid">
+      <div>
+        <div class="proj-hero-num">no. 01</div>
+        <div class="proj-title">Spar MMA · SEO Audit</div>
+        <p class="proj-blurb">Full technical and content audit for a martial arts gym in Williamsville, NY. The site was pulling 63 organic visitors/month, loading in 7.8 seconds on mobile, and had 111 crawl errors in its robots.txt. I identified 7 core issues and delivered a prioritized recommendation list ordered by impact vs. effort.</p>
+        <p class="proj-blurb">Top recommendations: robots.txt repair, image compression to WebP, and dedicated landing pages, projected to cut load time under 3 seconds.</p>
+      </div>
+      <div>
+        <div class="spar-stats">
+          <div class="stat"><span class="stat-num">111</span><span class="stat-label">crawl errors</span></div>
+          <div class="stat"><span class="stat-num">7.8s</span><span class="stat-label">mobile load</span></div>
+          <div class="stat"><span class="stat-num">58%</span><span class="stat-label">traffic drop</span></div>
+          <div class="stat"><span class="stat-num">66</span><span class="stat-label">speed score</span></div>
+          <div class="stat"><span class="stat-num">4</span><span class="stat-label">authority</span></div>
+          <div class="stat"><span class="stat-num">1</span><span class="stat-label">backlink</span></div>
+        </div>
+      </div>
     </div>
     <div class="proj-meta-row">
       <span class="chip">SEO</span>
