@@ -149,7 +149,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     gap: 14px;
     grid-template-columns: repeat(6, 1fr);
     grid-auto-rows: minmax(150px, auto);
-    min-height: calc(100vh - 120px);
+    min-height: auto;
   }
   .tile {
     background: var(--tile);
@@ -335,13 +335,14 @@ gtag('config', 'G-TZJ6MHHZCL');
     font-weight: 400;
   }
   .tile-about p:last-child { margin-bottom: 0; }
+  .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; }
+  @media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 20px; } }
   .tile-about .highlight {
     background: linear-gradient(180deg, transparent 55%, rgba(232, 216, 107, 0.55) 55%, rgba(232, 216, 107, 0.55) 90%, transparent 90%);
     padding: 0 2px;
   }
 
-  .tile-toolkit { grid-column: span 6; grid-row: span 1; justify-content: center; min-height: auto; }
-  .tile-toolkit .list { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tile-about .list { display: flex; flex-wrap: wrap; gap: 7px; }
 
   .tile-focus { grid-column: span 2; grid-row: span 1; justify-content: space-between; }
   .tile-focus .num {
@@ -416,13 +417,14 @@ gtag('config', 'G-TZJ6MHHZCL');
     text-decoration: none;
     color: inherit;
     margin-top: 10px;
-    background: var(--tile-warm);
+    background: var(--tile);
     transition: transform 0.3s, background 0.3s, color 0.3s, box-shadow 0.3s;
   }
   .tile-contact.highlight {
     box-shadow: 0 0 0 2px var(--tile-red);
     transform: translateY(-3px);
   }
+  .tile-contact:target { outline: none; }
   .tile-contact:hover {
     transform: rotate(0deg) translateY(-3px);
     background: var(--tile-dark);
@@ -542,18 +544,27 @@ gtag('config', 'G-TZJ6MHHZCL');
   <div class="tile tile-about">
     <span class="tape left"></span>
     <div class="tile-label"><span>About</span><span>01</span></div>
-    <div class="heading">Marketing grad pairing the creative side with the numbers.</div>
-    <p>I came into marketing through a side door. Before UB I ran the line at a Buffalo kitchen, and spent two summers delivering catering in New Jersey, handing out menus and selling the next order on the way out. Both jobs taught me that marketing is mostly <span class="highlight">paying attention and then acting on what you notice.</span></p>
-  </div>
-
-  <a class="tile tile-cta-projects" href="projects.html">
-    <span class="tape left"></span>
-    <div>
-      <div class="tile-label"><span>Featured Work</span></div>
-      <div class="cta-text">Projects I'm proud of. <span class="note">take a look</span></div>
+    <div class="about-grid">
+      <div>
+        <div class="heading">Marketing grad pairing the creative side with the numbers.</div>
+        <p>I came into marketing through a side door. Before UB I ran the line at a Buffalo kitchen, and spent two summers delivering catering in New Jersey, handing out menus and selling the next order on the way out. Both jobs taught me that marketing is mostly <span class="highlight">paying attention and then acting on what you notice.</span></p>
+      </div>
+      <div>
+        <div class="tile-label" style="margin-bottom: 10px;"><span>Toolkit</span></div>
+        <div class="list">
+          <span class="chip">SEO</span>
+          <span class="chip">SQL</span>
+          <span class="chip">Python</span>
+          <span class="chip">Excel</span>
+          <span class="chip">Google Ads</span>
+          <span class="chip">GA4</span>
+          <span class="chip">Screaming Frog</span>
+          <span class="chip">Google PageSpeed</span>
+          <span class="chip">Ubersuggest</span>
+        </div>
+      </div>
     </div>
-    <div class="cta-arrow">→</div>
-  </a>
+  </div>
 
   <div class="tile tile-focus" style="grid-column: 1 / span 2">
     <div class="tile-label"><span>Focus</span><span>i</span></div>
@@ -582,20 +593,14 @@ gtag('config', 'G-TZJ6MHHZCL');
     </div>
   </div>
 
-  <div class="tile tile-toolkit">
-    <div class="tile-label"><span>Toolkit</span></div>
-    <div class="list">
-      <span class="chip">SEO</span>
-      <span class="chip">SQL</span>
-      <span class="chip">Python</span>
-      <span class="chip">Excel</span>
-      <span class="chip">Google Ads</span>
-      <span class="chip">GA4</span>
-      <span class="chip">Screaming Frog</span>
-      <span class="chip">Google PageSpeed</span>
-      <span class="chip">Ubersuggest</span>
+  <a class="tile tile-cta-projects" href="projects.html">
+    <span class="tape left"></span>
+    <div>
+      <div class="tile-label"><span>Featured Work</span></div>
+      <div class="cta-text">Projects I'm proud of. <span class="note">take a look</span></div>
     </div>
-  </div>
+    <div class="cta-arrow">→</div>
+  </a>
 
   <a id="contact" class="tile tile-contact" href="mailto:jnarz2004@gmail.com" style="grid-column: 1 / span 2" onclick="gtag('event','contact_click',{contact_method:'email'})">
     <div class="tile-label"><span>Contact</span></div>
