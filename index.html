@@ -307,7 +307,7 @@
     display: inline-block;
   }
 
-  .tile-about { grid-column: span 4; grid-row: span 2; }
+  .tile-about { grid-column: span 6; grid-row: span 1; }
   .tile-about .heading {
     font-family: var(--display);
     font-size: clamp(26px, 2.8vw, 36px);
@@ -332,8 +332,8 @@
     padding: 0 2px;
   }
 
-  .tile-toolkit { grid-column: span 2; grid-row: span 1; }
-  .tile-toolkit .list { margin-top: auto; display: flex; flex-wrap: wrap; gap: 7px; }
+  .tile-toolkit { grid-column: span 6; grid-row: span 1; justify-content: center; }
+  .tile-toolkit .list { display: flex; flex-wrap: wrap; gap: 7px; }
 
   .tile-focus { grid-column: span 2; grid-row: span 1; justify-content: space-between; }
   .tile-focus .num {
@@ -528,17 +528,14 @@
     <p>At school I've been pairing creative work — copy, positioning, campaign concept — with the quantitative side: SQL, stats, SEO fundamentals. Right now I'm building a couple of projects I actually care about.</p>
   </div>
 
-  <div class="tile tile-toolkit">
-    <div class="tile-label"><span>Toolkit</span></div>
-    <div class="list">
-      <span class="chip">SEO</span>
-      <span class="chip">SQL</span>
-      <span class="chip">Python</span>
-      <span class="chip">Excel</span>
-      <span class="chip">Meta Ads</span>
-      <span class="chip">GA4</span>
+  <a class="tile tile-cta-projects" href="projects.html">
+    <span class="tape left"></span>
+    <div>
+      <div class="tile-label"><span>Featured Work</span><span>→ projects</span></div>
+      <div class="cta-text">Three projects I'm proud of. <span class="note">take a look</span></div>
     </div>
-  </div>
+    <div class="cta-arrow">→</div>
+  </a>
 
   <div class="tile tile-focus" style="grid-column: 1 / span 2">
     <div class="tile-label"><span>Focus</span><span>i</span></div>
@@ -567,14 +564,20 @@
     </div>
   </div>
 
-  <a class="tile tile-cta-projects" href="projects.html">
-    <span class="tape left"></span>
-    <div>
-      <div class="tile-label"><span>Featured Work</span><span>→ projects</span></div>
-      <div class="cta-text">Three projects I'm proud of. <span class="note">take a look</span></div>
+  <div class="tile tile-toolkit">
+    <div class="tile-label"><span>Toolkit</span></div>
+    <div class="list">
+      <span class="chip">SEO</span>
+      <span class="chip">SQL</span>
+      <span class="chip">Python</span>
+      <span class="chip">Excel</span>
+      <span class="chip">Google Ads</span>
+      <span class="chip">GA4</span>
+      <span class="chip">Screaming Frog</span>
+      <span class="chip">Google PageSpeed</span>
+      <span class="chip">Ubersuggest</span>
     </div>
-    <div class="cta-arrow">→</div>
-  </a>
+  </div>
 
   <a class="tile tile-contact" href="mailto:jnarz2004@gmail.com" style="grid-column: 1 / span 2">
     <div class="tile-label"><span>Contact</span><span class="dot"></span></div>
