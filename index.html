@@ -407,7 +407,12 @@
     justify-content: space-between;
     text-decoration: none;
     color: inherit;
-    transition: transform 0.3s, background 0.3s, color 0.3s;
+    margin-top: 10px;
+    transition: transform 0.3s, background 0.3s, color 0.3s, box-shadow 0.3s;
+  }
+  .tile-contact.highlight {
+    box-shadow: 0 0 0 3px var(--tile-red);
+    transform: translateY(-3px);
   }
   .tile-contact:hover {
     transform: rotate(0deg) translateY(-3px);
@@ -437,9 +442,8 @@
 
   .tile-footer {
     grid-column: span 6;
-    grid-row: span 1;
-    min-height: 72px;
-    padding: 24px 32px;
+    min-height: 0;
+    padding: 8px 32px 0;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -448,14 +452,17 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted);
-    background: var(--tile-warm);
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    transform: none;
   }
   .tile-footer .scribble {
     font-family: var(--hand);
-    font-size: 22px;
+    font-size: 18px;
     text-transform: none;
     letter-spacing: 0;
-    color: var(--ink-soft);
+    color: var(--muted);
     transform: rotate(-1deg);
   }
 
@@ -532,7 +539,7 @@
   <a class="tile tile-cta-projects" href="projects.html">
     <span class="tape left"></span>
     <div>
-      <div class="tile-label"><span>Featured Work</span><span>→ projects</span></div>
+      <div class="tile-label"><span>Featured Work</span></div>
       <div class="cta-text">Projects I'm proud of. <span class="note">take a look</span></div>
     </div>
     <div class="cta-arrow">→</div>
@@ -610,6 +617,18 @@
   </div>
 
 </main>
+
+<script>
+document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  var tiles = document.querySelectorAll('.tile-contact');
+  tiles[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  tiles.forEach(function(t) {
+    t.classList.add('highlight');
+    setTimeout(function() { t.classList.remove('highlight'); }, 1500);
+  });
+});
+</script>
 
 </body>
 </html>
