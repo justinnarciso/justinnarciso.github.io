@@ -602,7 +602,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     <div class="cta-arrow">→</div>
   </a>
 
-  <a id="contact" class="tile tile-contact" href="mailto:jnarz2004@gmail.com" style="grid-column: 1 / span 2" onclick="gtag('event','contact_click',{contact_method:'email'})">
+  <a id="contact" class="tile tile-contact" href="https://mail.google.com/mail/?view=cm&to=jnarz2004@gmail.com" target="_blank" rel="noopener" style="grid-column: 1 / span 2" onclick="gtag('event','contact_click',{contact_method:'email'})">
     <div class="tile-label"><span>Contact</span></div>
     <div>
       <div class="value">jnarz2004@gmail.com</div>
@@ -618,7 +618,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     </div>
   </a>
 
-  <a class="tile tile-contact" href="tel:+18456942931" onclick="gtag('event','contact_click',{contact_method:'phone'})">
+  <a class="tile tile-contact" href="tel:+18456942931" onclick="gtag('event','contact_click',{contact_method:'phone'}); if(!/Mobi|Android/i.test(navigator.userAgent)){event.preventDefault();navigator.clipboard.writeText('(845) 694-2931');this.querySelector('.sub').textContent='copied!';var s=this.querySelector('.sub');setTimeout(function(){s.textContent='or give me a ring →'},1500)}">
     <div class="tile-label"><span>Contact</span></div>
     <div>
       <div class="value">(845) 694-2931</div>
