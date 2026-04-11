@@ -149,6 +149,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     gap: 14px;
     grid-template-columns: repeat(10, 1fr);
     grid-auto-rows: minmax(120px, auto);
+    min-height: calc(100vh - 100px);
   }
   .tile {
     background: var(--tile);
@@ -285,6 +286,10 @@ gtag('config', 'G-TZJ6MHHZCL');
     box-shadow: none;
     border-radius: 0;
     transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .empty-state .heading {
     font-family: var(--display);
