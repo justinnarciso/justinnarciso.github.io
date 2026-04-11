@@ -410,6 +410,22 @@ gtag('config', 'G-TZJ6MHHZCL');
   }
   .tile-cta-projects:hover .cta-arrow { transform: translateX(8px); }
 
+  .tile-featured {
+    background: var(--tile-warm);
+    transition: transform 0.4s cubic-bezier(.2,.7,.2,1);
+    cursor: pointer;
+  }
+  .tile-featured:hover { transform: rotate(0deg) translateY(-4px); }
+  .featured-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+  .featured-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .stat { text-align: center; padding: 16px 8px; background: rgba(255,255,255,0.3); border-radius: 12px; }
+  .stat-num { font-family: var(--display); font-size: 32px; font-weight: 600; display: block; letter-spacing: -0.02em; color: var(--ink); }
+  .stat-label { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-top: 4px; display: block; }
+  @media (max-width: 900px) {
+    .featured-grid { grid-template-columns: 1fr; gap: 24px; }
+    .featured-stats { grid-template-columns: 1fr 1fr; }
+  }
+
   .tile-contact {
     grid-column: span 2;
     grid-row: span 1;
@@ -482,11 +498,10 @@ gtag('config', 'G-TZJ6MHHZCL');
     .bento { grid-template-columns: repeat(2, 1fr); gap: 11px; }
     .tile { padding: 24px; }
     .tile-hero { grid-column: span 2; grid-row: span 2; }
-    .tile-available, .tile-loc, .tile-focus, .tile-contact { grid-column: span 1; }
-    .tile-toolkit { grid-column: span 2; }
+    .tile-available, .tile-loc, .tile-contact { grid-column: span 1; }
     .tile-about { grid-column: span 2; grid-row: auto; }
-    .tile-cta-projects { grid-column: span 2; grid-row: auto; flex-direction: column; align-items: flex-start; gap: 14px; }
-    .tile-cta-projects .cta-arrow { font-size: 48px; align-self: flex-end; }
+    .tile-featured { grid-column: span 2 !important; }
+    .featured-grid { grid-template-columns: 1fr; gap: 20px; }
     .tile-footer { grid-column: span 2; flex-direction: column; gap: 10px; align-items: flex-start; }
     .tile-hero .name { font-size: 56px; }
     .tile-about .heading { font-size: 24px; }
@@ -566,40 +581,21 @@ gtag('config', 'G-TZJ6MHHZCL');
     </div>
   </div>
 
-  <div class="tile tile-focus" style="grid-column: 1 / span 2">
-    <div class="tile-label"><span>Focus</span><span>i</span></div>
-    <div>
-      <div class="num">no. 01</div>
-      <div class="name">Search</div>
-      <div class="desc">Technical audits, keyword research, on-page optimization.</div>
+  <a class="tile tile-featured" href="projects.html" style="grid-column: span 6; text-decoration: none; color: inherit;">
+    <div class="tile-label"><span>Featured Work</span><span>Spar MMA · SEO Audit</span></div>
+    <div class="featured-grid">
+      <div>
+        <div class="heading" style="margin-bottom: 12px;">I audited a gym's site. Here's what I found.</div>
+        <p style="font-family: var(--display); font-size: 15px; color: var(--ink-soft); line-height: 1.6; max-width: 480px;">Spar MMA in Williamsville, NY had 63 organic visitors a month and a site that hadn't been updated since 2017. I ran it through Screaming Frog, PageSpeed, and Ubersuggest and built a prioritized fix list. Robots.txt and image compression first, then content pages for every program they offer.</p>
+      </div>
+      <div class="featured-stats">
+        <div class="stat"><span class="stat-num">111</span><span class="stat-label">crawl errors</span></div>
+        <div class="stat"><span class="stat-num">7.8s</span><span class="stat-label">mobile load</span></div>
+        <div class="stat"><span class="stat-num">58%</span><span class="stat-label">traffic drop</span></div>
+        <div class="stat"><span class="stat-num">7</span><span class="stat-label">issues found</span></div>
+      </div>
     </div>
-  </div>
-
-  <div class="tile tile-focus tile-olive">
-    <div class="tile-label"><span>Focus</span><span>ii</span></div>
-    <div>
-      <div class="num">no. 02</div>
-      <div class="name">Social</div>
-      <div class="desc">Paid and organic. Platform-native creative and strategy.</div>
-    </div>
-  </div>
-
-  <div class="tile tile-focus tile-dark">
-    <div class="tile-label"><span>Focus</span><span>iii</span></div>
-    <div>
-      <div class="num">no. 03</div>
-      <div class="name">Data</div>
-      <div class="desc">SQL, Python, GA4. Measurement and reporting.</div>
-    </div>
-  </div>
-
-  <a class="tile tile-cta-projects" href="projects.html">
-    <span class="tape left"></span>
-    <div>
-      <div class="tile-label"><span>Featured Work</span></div>
-      <div class="cta-text">Projects I'm proud of. <span class="note">take a look</span></div>
-    </div>
-    <div class="cta-arrow">→</div>
+    <div style="font-family: var(--hand); font-size: 22px; color: var(--tile-red); margin-top: 14px;">read the full audit →</div>
   </a>
 
   <a id="contact" class="tile tile-contact" href="https://mail.google.com/mail/?view=cm&to=jnarz2004@gmail.com" target="_blank" rel="noopener" style="grid-column: 1 / span 2" onclick="gtag('event','contact_click',{contact_method:'email'})">
