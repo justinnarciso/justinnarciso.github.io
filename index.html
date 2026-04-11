@@ -619,15 +619,21 @@
 </main>
 
 <script>
-document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
-  e.preventDefault();
+function highlightContacts() {
   var tiles = document.querySelectorAll('.tile-contact');
   tiles[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
   tiles.forEach(function(t) {
     t.classList.add('highlight');
     setTimeout(function() { t.classList.remove('highlight'); }, 1500);
   });
+}
+document.querySelector('a[href="#contact"]').addEventListener('click', function(e) {
+  e.preventDefault();
+  highlightContacts();
 });
+if (window.location.hash === '#contact') {
+  setTimeout(highlightContacts, 300);
+}
 </script>
 
 </body>

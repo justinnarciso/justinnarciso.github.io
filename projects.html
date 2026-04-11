@@ -399,6 +399,32 @@
     display: inline-block;
   }
 
+  .tile-footer {
+    grid-column: span 10;
+    min-height: 0;
+    padding: 8px 32px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    transform: none;
+  }
+  .tile-footer .scribble {
+    font-family: var(--hand);
+    font-size: 18px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--muted);
+    transform: rotate(-1deg);
+  }
+
   @media (max-width: 900px) {
     .bento { grid-template-columns: repeat(2, 1fr); gap: 11px; }
     .tile { padding: 24px; }
@@ -407,8 +433,7 @@
     .tile-project { grid-column: span 10 !important; grid-row: auto; min-height: auto; }
     .tile-project.wide { grid-column: span 10 !important; grid-row: auto; }
     .tile-project.wide .proj-content-grid { grid-template-columns: 1fr; gap: 24px; }
-    .tile-back { grid-column: span 10; flex-direction: column; align-items: flex-start; gap: 10px; }
-    .tile-back .back-arrow { align-self: flex-end; font-size: 40px; }
+    .tile-footer { grid-column: span 10; }
   }
   @media (max-width: 720px) {
     .navbar { flex-direction: column; gap: 14px; padding: 18px 22px; }
@@ -514,12 +539,10 @@
     </div>
   </div>
 
-  <a class="tile tile-back" href="index.html">
-    <div>
-      <div class="back-text">Back to the main page <span class="note">thanks for reading</span></div>
-    </div>
-    <div class="back-arrow">←</div>
-  </a>
+  <div class="tile tile-footer">
+    <div>© 2026 Justin Narciso</div>
+    <div class="scribble">made in Suffern</div>
+  </div>
 
 </main>
 
