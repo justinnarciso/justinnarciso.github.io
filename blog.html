@@ -41,6 +41,8 @@ gtag('config', 'G-TZJ6MHHZCL');
     -webkit-font-smoothing: antialiased;
     padding: 18px;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background-image:
       radial-gradient(circle at 20% 30%, rgba(184, 57, 26, 0.04) 0%, transparent 40%),
       radial-gradient(circle at 80% 70%, rgba(107, 115, 64, 0.05) 0%, transparent 40%),
@@ -148,8 +150,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     display: grid;
     gap: 14px;
     grid-template-columns: repeat(10, 1fr);
-    grid-auto-rows: minmax(120px, auto);
-    min-height: calc(100vh - 100px);
+    grid-auto-rows: min-content;
   }
   .tile {
     background: var(--tile);
@@ -243,7 +244,6 @@ gtag('config', 'G-TZJ6MHHZCL');
     color: inherit;
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
-    justify-content: space-between;
   }
   .post-card:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 4px 16px rgba(42,29,20,0.15); }
   .post-card .post-date {
@@ -252,7 +252,6 @@ gtag('config', 'G-TZJ6MHHZCL');
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted);
-    margin-bottom: 10px;
   }
   .post-card .post-title {
     font-family: var(--display);
@@ -276,6 +275,20 @@ gtag('config', 'G-TZJ6MHHZCL');
     transform: rotate(-1deg);
     display: inline-block;
     margin-top: auto;
+  }
+
+  .post-card .post-date-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+  .post-card .post-source {
+    font-family: var(--hand);
+    font-size: 14px;
+    color: var(--muted);
+    transform: rotate(-1deg);
+    display: inline-block;
   }
 
   .empty-state {
@@ -304,12 +317,11 @@ gtag('config', 'G-TZJ6MHHZCL');
     color: var(--muted);
   }
 
-  .tile-footer {
-    grid-column: span 10;
-    min-height: 0;
-    padding: 8px 32px 0;
-    margin-top: auto;
-    flex-direction: row;
+  .site-footer {
+    max-width: 1340px;
+    margin: auto auto 0;
+    padding: 14px 32px 0;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: var(--mono);
@@ -317,12 +329,10 @@ gtag('config', 'G-TZJ6MHHZCL');
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--muted);
-    background: transparent;
-    box-shadow: none;
-    border-radius: 0;
-    transform: none;
+    width: 100%;
+    box-sizing: border-box;
   }
-  .tile-footer .scribble {
+  .site-footer .scribble {
     font-family: var(--hand);
     font-size: 18px;
     text-transform: none;
@@ -338,7 +348,6 @@ gtag('config', 'G-TZJ6MHHZCL');
     .tile-page-header .page-title { font-size: 58px; }
     .post-card { grid-column: span 2; }
     .empty-state { grid-column: span 2; }
-    .tile-footer { grid-column: span 2; }
   }
   @media (max-width: 720px) {
     .navbar { flex-direction: column; gap: 14px; padding: 18px 22px; }
@@ -369,18 +378,19 @@ gtag('config', 'G-TZJ6MHHZCL');
     <div class="tile-label"><span>&#9670; Blog</span></div>
     <div class="page-title">
       Blog<span class="period">.</span>
-      <span class="scribble">thoughts and notes</span>
+      <span class="scribble">things I write about</span>
     </div>
   </div>
 
   <div id="posts-container"></div>
 
-  <div class="tile tile-footer">
-    <div>&copy; 2026 Justin Narciso</div>
-    <div class="scribble">made in Suffern</div>
-  </div>
 
 </main>
+
+<footer class="site-footer">
+  <div>&copy; 2026 Justin Narciso</div>
+  <div class="scribble">made in Suffern</div>
+</footer>
 
 <script>
 fetch('posts.json')
@@ -402,7 +412,9 @@ fetch('posts.json')
       if (i === 0) html += '<span class="tape left"></span>';
       if (i === 1) html += '<span class="tape right"></span>';
       html += '<div>';
-      html += '<div class="post-date">' + dateStr + '</div>';
+      html += '<div class="post-date-row"><div class="post-date">' + dateStr + '</div>';
+      if (post.source) html += '<div class="post-source">via ' + post.source + '</div>';
+      html += '</div>';
       html += '<div class="post-title">' + post.title + '</div>';
       html += '<div class="post-excerpt">' + excerpt + '</div>';
       html += '</div>';
