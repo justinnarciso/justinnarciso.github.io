@@ -292,6 +292,8 @@ gtag('config', 'G-TZJ6MHHZCL');
     padding: 40px 40px 28px;
   }
   .tile-project.wide { grid-column: span 10; grid-row: span 2; min-height: 360px; }
+  .tile-project.half { grid-column: span 5; }
+  .tile-project.half .proj-content-grid { grid-template-columns: 1fr; gap: 28px; }
   a.tile-project { transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
   a.tile-project:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 4px 16px rgba(42,29,20,0.15); }
 
@@ -397,6 +399,54 @@ gtag('config', 'G-TZJ6MHHZCL');
   .tile-project.tile-dark .stat { background: rgba(245, 234, 208, 0.06); }
   .tile-project.tile-dark .stat-num { color: var(--cream); }
   .tile-project.tile-dark .stat-label { color: rgba(245, 234, 208, 0.55); }
+
+  .campaign-snaps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    justify-items: center;
+    align-items: start;
+  }
+  .snap {
+    background: var(--cream);
+    padding: 8px 8px 12px;
+    border-radius: 3px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+    position: relative;
+    max-width: 200px;
+    width: 100%;
+  }
+  .snap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+  .snap::before {
+    content: '';
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    margin-left: -26px;
+    width: 52px;
+    height: 16px;
+    background: rgba(212, 180, 120, 0.6);
+    border: 1px solid rgba(0,0,0,0.08);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    transform: rotate(-3deg);
+  }
+  .snap:nth-child(1) { transform: rotate(-2.5deg); }
+  .snap:nth-child(2) { transform: rotate(1.8deg); margin-top: 14px; }
+  .snap:nth-child(3) { transform: rotate(-1.2deg); grid-column: 1 / -1; margin-top: -6px; }
+  .snap:nth-child(3)::before { transform: rotate(3deg); }
+  .snap .snap-caption {
+    font-family: var(--hand);
+    font-size: 15px;
+    color: rgba(31,23,15,0.65);
+    text-align: center;
+    margin-top: 6px;
+    line-height: 1.1;
+  }
 
   .proj-meta-row {
     display: flex;
@@ -511,17 +561,18 @@ gtag('config', 'G-TZJ6MHHZCL');
   }
 
   @media (max-width: 900px) {
-    .bento { grid-template-columns: repeat(2, 1fr); gap: 11px; }
+    .bento { grid-template-columns: 1fr; gap: 11px; }
     .tile { padding: 24px; }
-    .tile-page-header { grid-column: span 10; flex-direction: column; align-items: flex-start; min-height: 220px; }
+    .tile-page-header { grid-column: 1 / -1; flex-direction: column; align-items: flex-start; min-height: 220px; }
     .tile-page-header .page-title { font-size: 58px; }
-    .tile-project { grid-column: span 10 !important; grid-row: auto; min-height: auto; }
+    .tile-project { grid-column: 1 / -1 !important; grid-row: auto; min-height: auto; }
     .postit-overlay { display: none; }
-    .tile-project.wide { grid-column: span 10 !important; grid-row: auto; }
+    .tile-project.wide { grid-column: 1 / -1 !important; grid-row: auto; }
     .tile-project.wide .proj-content-grid { grid-template-columns: 1fr; gap: 24px; }
     .proj-content-grid { grid-template-columns: 1fr !important; gap: 24px; }
     .spar-stats { grid-template-columns: 1fr 1fr !important; }
-    .tile-footer { grid-column: span 10; }
+    .campaign-snaps { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .tile-footer { grid-column: 1 / -1; }
   }
   @media (max-width: 720px) {
     .navbar { flex-direction: column; gap: 14px; padding: 18px 22px; }
@@ -578,7 +629,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     </div>
   </a>
  
-  <a class="tile tile-project tile-dark" href="whitewood_google_ads_case_study.pdf" target="_blank" rel="noopener" style="text-decoration:none;grid-column:span 10">
+  <a class="tile tile-project tile-dark half" href="whitewood_google_ads_case_study.pdf" target="_blank" rel="noopener" style="text-decoration:none">
     <span class="tape right"></span>
     <div class="tile-label"><span>Project 02</span><span>April 2026</span></div>
     <div class="proj-content-grid">
@@ -607,7 +658,7 @@ gtag('config', 'G-TZJ6MHHZCL');
       <span style="margin-left:auto;font-family:var(--hand);font-size:22px;color:#e8d86b">view full report →</span>
     </div>
   </a>
- <a class="tile tile-project" href="playstation_case_study.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;grid-column:span 10">
+ <a class="tile tile-project half" href="playstation_case_study.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
   <span class="tape left"></span>
   <div class="tile-label"><span>Project 03</span><span>June 2026</span></div>
 
@@ -648,6 +699,34 @@ gtag('config', 'G-TZJ6MHHZCL');
     <span style="margin-left:auto;font-family:var(--hand);font-size:22px;color:var(--tile-red)">view full audit →</span>
   </div>
 </a>
+
+  <a class="tile tile-project tile-dark" href="linkedin_content_campaign.pdf" target="_blank" rel="noopener" style="text-decoration:none;grid-column:span 10">
+    <span class="tape right"></span>
+    <div class="tile-label"><span>Project 04</span><span>July 2026</span></div>
+    <div class="proj-content-grid">
+      <div>
+        <div class="proj-hero-num">no. 04</div>
+        <div class="proj-title">NYC Energy Firm · LinkedIn Content Campaign</div>
+        <p class="proj-blurb">Three-post LinkedIn campaign for a NYC energy engineering firm: a heat pump retrofit case study told as a story instead of a press release, a plain-English explainer on the LL84/133 benchmarking laws, and an awareness-day post built around the homeowner-vs-building contrast.</p>
+        <p class="proj-blurb">Each post pairs copy with an original graphic — a feed-scroll stat card, a "does this apply to me?" decision tree, and a nighttime photo concept. AI-assisted drafting with human storytelling, tone checks, and facts sourced from the firm rather than the model.</p>
+      </div>
+      <div>
+        <div class="campaign-snaps">
+          <div class="snap"><img src="assets/campaign_post1.jpg" alt="Stat graphic: how one co-op beat Local Law 97" loading="lazy"><div class="snap-caption">post 1 · case study</div></div>
+          <div class="snap"><img src="assets/campaign_post2.jpg" alt="Decision tree: do you need to file under LL84/133?" loading="lazy"><div class="snap-caption">post 2 · explainer</div></div>
+          <div class="snap"><img src="assets/campaign_post3.jpg" alt="Nighttime NYC building photo for Cut Your Energy Costs Day" loading="lazy"><div class="snap-caption">post 3 · awareness</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="proj-meta-row">
+      <span class="chip">Content Strategy</span>
+      <span class="chip">LinkedIn</span>
+      <span class="chip">Copywriting</span>
+      <span class="chip">Canva</span>
+      <span class="chip">AI-Assisted</span>
+      <span style="margin-left:auto;font-family:var(--hand);font-size:22px;color:#e8d86b">view full campaign →</span>
+    </div>
+  </a>
 
   <div class="tile tile-footer">
     <div>© 2026 Justin Narciso</div>
