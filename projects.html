@@ -293,8 +293,8 @@ gtag('config', 'G-TZJ6MHHZCL');
   }
   .tile-project.wide { grid-column: span 10; grid-row: span 2; min-height: 360px; }
   .tile-project.half { grid-column: span 5; justify-content: flex-start; }
-  .tile-project.half .proj-content-grid { grid-template-columns: 1fr; gap: 28px; }
-  .tile-project.half .proj-meta-row { margin-top: auto; padding-top: 20px; }
+  .tile-project.half .proj-content-grid { display: flex; flex-direction: column; justify-content: space-between; align-items: stretch; gap: 28px; flex: 1; }
+  .tile-project.half .proj-meta-row { padding-top: 14px; }
   a.tile-project { transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
   a.tile-project:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 4px 16px rgba(42,29,20,0.15); }
 
@@ -666,7 +666,7 @@ gtag('config', 'G-TZJ6MHHZCL');
   </div>
 </a>
 
-  <a class="tile tile-project half" href="whitewood_google_ads_case_study.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
+  <a class="tile tile-project tile-warm half" href="whitewood_google_ads_case_study.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit">
     <span class="tape right"></span>
     <div class="tile-label"><span>Project 02</span><span>April 2026</span></div>
     <div class="proj-content-grid">
@@ -696,7 +696,7 @@ gtag('config', 'G-TZJ6MHHZCL');
     </div>
   </a>
 
-  <a class="tile tile-project tile-dark" href="spar_mma_seo_audit.pdf" target="_blank" rel="noopener" style="text-decoration:none;grid-column:span 10;position:relative;overflow:visible">
+  <a class="tile tile-project" href="spar_mma_seo_audit.pdf" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;grid-column:span 10;position:relative;overflow:visible">
     <span class="tape left"></span>
     <div class="tile-label"><span>Project 01</span><span>April 2026</span></div>
     <div class="postit-overlay">
@@ -726,7 +726,7 @@ gtag('config', 'G-TZJ6MHHZCL');
       <span class="chip">Screaming Frog</span>
       <span class="chip">PageSpeed</span>
       <span class="chip">Ubersuggest</span>
-      <span style="margin-left:auto;font-family:var(--hand);font-size:22px;color:#e8d86b">view full audit →</span>
+      <span style="margin-left:auto;font-family:var(--hand);font-size:22px;color:var(--tile-red)">view full audit →</span>
     </div>
   </a>
  
